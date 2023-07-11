@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Lab Experiment
+        </title>
+        <style>
+            h1{
+                color: #333;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>BOM and DOM with classes</h1>
+        <script src="color.js"></script>
+    </body>
+</html>
+
+----------JAVASCRIPT for web page-------
+class LabExperiment {
+    constructor(){
+        this.button = document.createElement('button');
+        this.button.textContent = 'Click Me';
+        document.body.appendChild(this.button);
+        this.button.addEventListener('click', this.handleClick.bind(this));
+    }
+    handleClick(){
+        alert('Button clicked!');
+
+        const heading = document.querySelector('h1');
+        heading.style.color = 'blue';
+    }  
+};
+const lab = new LabExperiment()
