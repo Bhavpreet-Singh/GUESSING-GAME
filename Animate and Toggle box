@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>jQueryExample</title>
+        <style>
+            .box{
+                width: 100px;
+                height: 100px;
+                background-color: red;
+                margin: 10px;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </head>
+    <body>
+        <button id="animateBtn">Animate</button>
+        <button id="toggleBtn">Toggle</button>
+        <div class="box"></div>
+        <p id="content">This is some sample content.</p>
+        <script src="script.js"></script>
+    </body>
+</html>
+
+---------JAVASCRIPT FOR THE FUNCTIONING OF THE CODE-------
+$("#animateBtn").click(function(){
+    $(".box").animate({
+        width: "200px",
+        height: "200px",
+        opacity: 0.5
+    }, 1000,function(){
+        console.log('Animation completed');
+    });
+});
+
+$("#toggleBtn").click(function() {
+    $(".box").toggle(1000);
+});
+$(".box").hover(
+    function() {
+        $(this).css("background-color", "blue");
+    },
+    function() {
+        $(this).css("background-color", "red");
+    }
+);
+
+$("#content").text("this is the updated content using .text() method.");
+$("#content").html("<strong>This is the updated content using .html() method.</strong>");
+$("body").append("<p>This is a new paragraph added using .apprend() method.</P>");
