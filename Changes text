@@ -1,0 +1,17 @@
+<!DOCTYPE html >
+<html >
+<head >
+   <script src ="https://code.jquery.com/jquery-3.6.0.min.js"> </script>
+</head>
+<body >
+  <h1 id="myHeading">Hello, World ! </h1 >
+  <button id="changeTextButton">Change Text</button>
+  <script>
+   $(document).ready(function () {
+    $("#changeTextButton").click(function() {
+     $("#myHeading").text("New␣Heading␣Text ");
+    }) ;
+   }) ;
+  </script>
+</body>
+</html>
