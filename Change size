@@ -1,0 +1,27 @@
+---------HTML document and Javascript file
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .box{
+                width: 100px;
+                height: 100px;
+                background-color: red;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </head>
+    <body>
+        <div class="box"></div>
+        <button id="changeColorButton">Change Color</button>
+        <script>
+            $(document).ready(function(){
+                $("#changeColorButton").click(function(){
+                    $(".box").css({
+                        "background-color": "blue", "width": "200px", "height": "200px"
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>
