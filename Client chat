@@ -1,0 +1,79 @@
+-------HTML, Javascript and Css files-----------
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Chat Client</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div id="chat-container">
+            <div id="messages"></div>
+            <form id="message-form">
+                <input type="text" id="message-input" placeholder="Type your message...">
+                <button type="submit">Send</button>
+            </form>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                const socket = io.connect('http://localhost:80');
+                const messageForm = $('#message-form');
+                const messageInput = $('#message-input');
+                const messages = $('#messages');
+
+                socket.on('message', function(data){
+                    messages.append(`<p>${data}</p>`);
+                });
+                messageForm.submit(function(event){
+                    event.preventDefault();
+                    const message = messageInput.val();
+                    socket.emit('message',message);
+                    messageInput.val('');
+                });
+            });
+        </script>
+    </body>
+</html>
+
+--------CSS FILE FOR THE WEB PAGE--------
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+button{
+    padding: 5px 10px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+button:hover{
+    background-color: #3e8e41;
+}
+#chat-container{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
+    padding: 20px;
+}
+#messages{
+    height: 80%;
+    overflow-y: scroll;
+}
+#message-form{
+    display: flex;
+    align-items: center;
+}
+#message-input{
+    flex-grow: 1;
+    margin-right: 10px;
+    padding: 5px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+}
